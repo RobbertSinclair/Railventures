@@ -535,7 +535,7 @@ create_map = function()
         }
 
     }
-    const key = '5e8368d318410e';
+    const key = MAP_KEY;
     const streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
     let map = L.map('map', {
         center: [local_lat, local_long],
