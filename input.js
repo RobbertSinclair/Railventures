@@ -119,7 +119,7 @@ validate_values = function(first, last, i){
 validate_station = function(station) {
     let count = 0;
     let ourRequest = new XMLHttpRequest();
-    ourRequest.open("GET", 'https://transportapi.com/v3/uk/places.json?query='+ station +'&type=train_station&app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300', false);
+    ourRequest.open("GET", 'https://transportapi.com/v3/uk/places.json?query='+ station +'&type=train_station&app_id='+API_KEY, false);
     ourRequest.onload = function() {
         var data_1 = JSON.parse(ourRequest.responseText);
         console.log(data_1);
@@ -157,7 +157,7 @@ get_request = function(station, fname, lname, max_time) {
 
 
     let second_request = new XMLHttpRequest();
-    second_request.open("GET", "https://transportapi.com/v3/uk/train/station/" + station + "///timetable.json?app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300&train_status=passenger", false);
+    second_request.open("GET", "https://transportapi.com/v3/uk/train/station/" + station + "///timetable.json?app_id="+API_KEY+"&train_status=passenger", false);
     second_request.onload = function () {
         var data_2 = JSON.parse(second_request.responseText);
         var i;
