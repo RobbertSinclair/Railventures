@@ -167,7 +167,7 @@ get_request = function(station, fname, lname, max_time) {
         data_2.departures.all.forEach(function (listItem) {
 
 
-            request_3.open("GET", "https://transportapi.com/v3/uk/train/service/train_uid:" + listItem.train_uid + "///timetable.json?app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300&darwin=false&live=false", false);
+            request_3.open("GET", "https://transportapi.com/v3/uk/train/service/train_uid:" + listItem.train_uid + "///timetable.json?app_id="+API_KEY+"&darwin=false&live=false", false);
             request_3.onload = function () {
                 var data_3 = JSON.parse(request_3.responseText);
                 var j;
@@ -295,7 +295,7 @@ get_services = function(local_station) {
     console.log(destination);
     var request_4 = new XMLHttpRequest();
     request_4.open("GET", "https://transportapi.com/v3/uk/train/station/" + local_station +
-        "///timetable.json?app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300&calling_at="
+        "///timetable.json?app_id="+API_KEY+"&calling_at="
         + destination + "&train_status=passenger", false);
     request_4.onload = function () {
         var data_4 = JSON.parse(request_4.responseText);
@@ -328,7 +328,7 @@ get_services = function(local_station) {
 
             var request_5 = new XMLHttpRequest();
             request_5.open("GET", "https://transportapi.com/v3/uk/train/service/train_uid:" + data_4.departures.all[m].train_uid
-                + "///timetable.json?app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300&darwin=false&live=false", false);
+                + "///timetable.json?app_id="+API_KEY+"&darwin=false&live=false", false);
             request_5.onload = function () {
                 var data_5 = JSON.parse(request_5.responseText);
                 console.log(data_5);
@@ -446,7 +446,7 @@ create_map = function()
 
             if(stations[i] == "Brighton")
             {
-                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query=BTN&type=train_station&app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300', false);
+                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query=BTN&type=train_station&app_id='+API_KEY, false);
                 request_7.onload = function()
                 {
                     var data_7 = JSON.parse(request_7.responseText);
@@ -463,7 +463,7 @@ create_map = function()
                 request_7.send();
             }
             else {
-                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query=' + stations[i] + '&type=train_station&app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300', false);
+                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query=' + stations[i] + '&type=train_station&app_id='+API_KEY, false);
                 request_7.onload = function () {
                     var data_7 = JSON.parse(request_7.responseText);
                     if (data_7.member.length > 0) {
@@ -491,7 +491,7 @@ create_map = function()
         {
             if(stations[i] == "Brighton")
             {
-                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query=BTN&type=train_station&app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300', false);
+                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query=BTN&type=train_station&app_id='+API_KEY, false);
                 request_7.onload = function()
                 {
                     var data_7 = JSON.parse(request_7.responseText);
@@ -509,7 +509,7 @@ create_map = function()
             }
             else
             {
-                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query='+ stations[i] +'&type=train_station&app_id=8a247cdd&app_key=9e9645bc611d43785491c64665bbe300', false);
+                request_7.open("GET", 'https://transportapi.com/v3/uk/places.json?query='+ stations[i] +'&type=train_station&app_id='+API_KEY, false);
                 request_7.onload = function()
                 {
                     var data_7 = JSON.parse(request_7.responseText);
