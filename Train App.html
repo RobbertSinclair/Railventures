@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="eng"></html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="input_style.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <title>RailVentures</title>
+</head>
+<script src="input.js">
+</script>
+<header>
+<h1 id="demo"><strong>RailVentures</strong></h1>
+</header>
+<body>
+<section>
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script src="https://tiles.unwiredmaps.com/js/leaflet-unwired.js"></script>
+<div id = "station_img">
+    <img src = 'image1.jpeg'/>
+</div>
+<form name= "input_form" >
+    First Name:
+    <input type="text" id = "first_name" name="First Name"/>
+    Last Name:
+    <input type="text" id = "last_name" name = "Last Name"/><br><br>
+    Age:
+    <select id = 'Age' name = "age"><br>
+        <option value = "default">Please select an age range</option>
+        <option value = "under_16">Under 16</option>
+        <option value = "16-30">16-30</option>
+        <option value = "30-45">30-45</option>
+        <option value = "45-65">45-65</option>
+        <option value = "over_65">Over 65</option>
+    </select><br><br>
+    Local Station:
+    <input type="text" id = "local_station" name="Local Station"/><br><br>
+
+    <p>Maximum time to Travel: <span id = "hours"></span> hrs <span id = "time_output"></span> mins</p>
+    0 Mins
+    <input type="range" min = "0" max = "840" value = "0" class="slider" id = "Time"/>
+    14 Hours<br><br><br>
+    Direct Connections only:
+    <input type="checkbox" name = "direct_connections" value = "direct_connections"/>
+    <br><br><br>
+    <input type="submit" id = "submit_button" value="Go on an adventure" onclick="getValues()"/><br>
+    <script>
+        let slider = document.getElementById("Time");
+        let output1 = document.getElementById("hours");
+        let output2 = document.getElementById("time_output");
+        let hours = 0;
+        output2.innerHTML = slider.value;
+        output1.innerHTML = (hours);
+        slider.oninput = function(){
+            hours = parseInt(this.value /60);
+            output1.innerHTML = (hours);
+            output2.innerHTML = (this.value - (hours*60));
+        }
+    </script>
+
+
+</form>
+<script src = "input.js"/>
+</section>
+
+
+</body>
+
+</html>
